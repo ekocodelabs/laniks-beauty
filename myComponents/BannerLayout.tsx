@@ -43,7 +43,7 @@ export default function BannerLayout() {
       {/* 3. Fully Accessible, Highly Functional SEO Content Copy */}
       <div className="relative z-20 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Sub-badge highlighting targeted high-end positioning */}
-        <span className="inline-block text-xs md:text-sm tracking-[0.25em] uppercase text-amber-400 font-medium mb-4 animate-fade-in">
+        <span className="inline-block text-xs md:text-sm tracking-[0.25em] mt-27 uppercase text-amber-400 font-medium mb-4 animate-fade-in">
           Premium Hair & Luxury Accessories
         </span>
 
