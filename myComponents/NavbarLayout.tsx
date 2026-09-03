@@ -1,16 +1,15 @@
-// components/navbar.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaBars, FaTimes, FaWhatsapp, FaLeaf } from "react-icons/fa";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function NavbarLayout() {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Monitor scroll depth to apply high-end background transition effects
+  // Monitors page vertical scroll positioning to switch container background opacity
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -23,128 +22,134 @@ export default function NavbarLayout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  // Structural Navigation links mapping to sections
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Our Heritage", href: "#about" },
-    { label: "Shop Remedies", href: "#shop" },
-    { label: "Contact Us", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "The Legacy", href: "#about" },
+    { name: "Signature Collection", href: "#featured-products" },
+    { name: "Connect", href: "#contact" },
   ];
 
-  // Pre-compiled WhatsApp connection string matching prior structures
-  const encodedWhatsappMsg = encodeURIComponent(
-    "Hello Tegas Place, I am visiting your website and would love to learn more about your premium spices and master herbalist consultations.",
-  );
-  const whatsappUrl = `https://wa.me{encodedWhatsappMsg}`;
+  const whatsappNumber = "2348000000000";
+  const directInquiryUrl = `https://wa.me{whatsappNumber}?text=Hello%20Laniks%20Beauty%2C%20I%20am%20visiting%20your%20digital%20showroom%20and%20would%20love%20to%20speak%20with%20a%20luxury%20consultant.`;
 
   return (
     <>
+      {/* 1. Global Navigation Bar Fixed Framework */}
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
           scrolled
-            ? "bg-zinc-950/85 backdrop-blur-md border-b border-zinc-900/80 py-4"
-            : "bg-transparent py-6"
+            ? "bg-stone-950/80 backdrop-blur-md border-stone-900/80 py-4"
+            : "bg-transparent border-transparent py-6"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* 1. Brand Logo Block */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <FaLeaf className="text-amber-500 text-xl md:text-2xl transition-transform duration-500 group-hover:rotate-12" />
-            <span className="font-serif font-bold text-xl md:text-2xl tracking-tight text-white">
-              Tegas{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-400 to-amber-500">
-                Place
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Elegant Serif Branding Anchor */}
+            <Link href="/" className="flex flex-col group focus:outline-none">
+              <span className="text-lg sm:text-xl font-serif text-stone-50 tracking-[0.15em] font-semibold transition-colors group-hover:text-amber-200">
+                LANIKS{" "}
+                <span className="text-amber-400 font-normal">BEAUTY</span>
               </span>
-            </span>
-          </Link>
+              <span className="text-[9px] tracking-[0.3em] uppercase text-stone-400 -mt-0.5 group-hover:text-stone-300 transition-colors">
+                Hair & Luxury Pieces
+              </span>
+            </Link>
 
-          {/* 2. Desktop Navigation Center Matrix */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium tracking-wide text-zinc-300 hover:text-amber-400 transition-colors duration-200 uppercase"
+            {/* Desktop Navigation Links (Hidden on Phones and Tablets) */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.href}
+                  className="text-xs tracking-widest uppercase text-stone-300 hover:text-amber-400 font-light transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Action CTA Target Elements */}
+            <div className="hidden md:flex items-center">
+              <Button
+                size="sm"
+                className="bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-medium tracking-wider text-xs uppercase px-5 rounded-full shadow-lg shadow-amber-950/10 transition-all duration-300 scale-100 hover:scale-[1.02]"
               >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+                <a
+                  href={directInquiryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Order Now
+                </a>
+              </Button>
+            </div>
 
-          {/* 3. Desktop Action Trigger */}
-          <div className="hidden md:block">
-            <Button
-              size="sm"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-full px-5 transition-all duration-300 flex items-center gap-2"
-            >
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp className="text-base" />
-                <span>Consult Live</span>
-              </a>
-            </Button>
+            {/* Mobile Interaction Trigger Node */}
+            <div className="flex md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-lg text-stone-400 hover:text-stone-100 hover:bg-stone-900/50 focus:outline-none transition-colors"
+                aria-controls="mobile-menu"
+                aria-expanded={isOpen}
+              >
+                <span className="sr-only">Open main menu</span>
+                {isOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
-
-          {/* 4. Mobile Menu Burger Button */}
-          <button
-            onClick={toggleMenu}
-            aria-label="Toggle Navigation Menu"
-            className="md:hidden p-2 text-zinc-300 hover:text-amber-400 transition-colors duration-200 z-50 focus:outline-none"
-          >
-            {isOpen ? (
-              <FaTimes className="text-xl" />
-            ) : (
-              <FaBars className="text-xl" />
-            )}
-          </button>
         </div>
       </nav>
 
-      {/* 5. Full Screen Responsive Mobile Menu Overlay */}
+      {/* 2. Responsive Mobile Overlay Slideout (Optimized for Touch Actions) */}
       <div
-        className={`fixed inset-0 z-40 bg-zinc-950/98 backdrop-blur-lg md:hidden flex flex-col justify-center items-center transition-all duration-300 transform ${
+        id="mobile-menu"
+        className={`fixed inset-0 z-40 bg-stone-950 flex flex-col justify-between px-6 pt-28 pb-10 transition-all duration-500 ease-in-out md:hidden ${
           isOpen
-            ? "opacity-100 translate-x-0"
-            : "opacity-0 translate-x-full pointer-events-none"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-full pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-center gap-8 text-center px-6 w-full max-w-sm">
-          {/* Identity Stamp within Menu */}
-          <div className="flex items-center gap-2 mb-4">
-            <FaLeaf className="text-amber-500 text-2xl" />
-            <span className="font-serif font-bold text-2xl text-white">
-              Tegas Place
-            </span>
-          </div>
-
-          {/* Mobile Links Stack */}
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
+        {/* Dynamic Navigation Stack Layer */}
+        <div className="flex flex-col space-y-6">
+          <span className="text-[10px] tracking-[0.35em] uppercase text-amber-500/60 font-semibold mb-2">
+            Navigation Showroom
+          </span>
+          {navLinks.map((link, idx) => (
+            <a
+              key={idx}
               href={link.href}
-              onClick={toggleMenu} // Smoothly dismiss menu layer when interacting
-              className="text-xl font-medium tracking-widest text-zinc-200 hover:text-amber-400 transition-colors duration-200 uppercase w-full py-2 border-b border-zinc-900/50"
+              onClick={() => setIsOpen(false)} // Safely closes overlay context after execution
+              className="text-2xl font-serif text-stone-100 hover:text-amber-400 transition-colors tracking-wide font-light py-2 border-b border-stone-900/50"
             >
-              {link.label}
-            </Link>
+              {link.name}
+            </a>
           ))}
+        </div>
 
-          {/* Mobile Direct Action Trigger */}
+        {/* Bottom Full-Width Mobile Action Funnel Area */}
+        <div className="flex flex-col space-y-4">
           <Button
             size="lg"
-            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-full py-6 mt-4 flex items-center justify-center gap-3 shadow-lg shadow-emerald-950/40"
+            className="w-full bg-linear-to-r from-amber-500 to-amber-600 text-stone-950 font-medium tracking-wide py-6 rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-amber-950/20"
           >
             <a
-              href={whatsappUrl}
+              href={directInquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={toggleMenu}
             >
-              <FaWhatsapp className="text-xl" />
-              <span>Consult on WhatsApp</span>
+              <Phone className="w-4 h-4" />
+              <span>Consult via WhatsApp</span>
             </a>
           </Button>
+
+          <p className="text-center text-[10px] text-stone-500 font-light tracking-wider">
+            Laniks Beauty — Available Nationwide Across Nigeria
+          </p>
         </div>
       </div>
     </>

@@ -1,98 +1,117 @@
-// components/featured-products.tsx
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import ProductCard from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 
-// Structured Product Data Matrix containing requested items with optimized meta categories
-const featuredProductsData = [
-  {
-    id: "inf-flush",
-    title: "Infection Flush",
-    price: 15000,
-    formattedPriceString: "15k",
-    category: "Holistic Remedies",
-    imagePath: "/images/products/infection-flush.jpg", // Local image pathway within public folder
-  },
-  {
-    id: "detox-drk",
-    title: "Detox Drink",
-    price: 12000,
-    formattedPriceString: "12k",
-    category: "Wellness Teas",
-    imagePath: "/images/products/detox-drink.jpg",
-  },
-  {
-    id: "weight-loss",
-    title: "Weight Loss Drink",
-    price: 15000,
-    formattedPriceString: "15k",
-    category: "Organic Slimming",
-    imagePath: "/images/products/weight-loss-drink.jpg",
-  },
-  {
-    id: "men-stamina",
-    title: "Men Stamina Tea",
-    price: 15000,
-    formattedPriceString: "15k",
-    category: "Vitality Boosters",
-    imagePath: "/images/products/men-stamina-tea.jpg",
-  },
-];
+// Strictly typed schema for standard internal maintenance
+interface ProductItem {
+  id: string;
+  imageSrc: string;
+  altText: string;
+  category: "Luxury Hair" | "Premium Jewelry";
+  title: string;
+  price: string;
+}
 
 export default function ProductsLayout() {
+  // Balanced mock matrix fulfilling specific operational layouts (2 Hair, 2 Jewelry)
+  const featuredItems: ProductItem[] = [
+    {
+      id: "hair-1",
+      imageSrc: "/images/product4.jpg",
+      altText:
+        "Premium Vietnamese raw bone straight human hair wig lace closure Laniks Beauty",
+      category: "Luxury Hair",
+      title: "Raw Bone Straight Closure Wig",
+      price: "₦420,000",
+    },
+    {
+      id: "hair-2",
+      imageSrc: "/images/product5.jpg",
+      altText:
+        "Luxury donor bouncy curls human hair bundle frontal wig Laniks Beauty",
+      category: "Luxury Hair",
+      title: "Luxury Double Drawn Bouncy Curls",
+      price: "₦385,000",
+    },
+    {
+      id: "jewelry-1",
+      imageSrc: "/images/product1.jpg",
+      altText:
+        "Premium non-tarnish cubic zirconia bridal necklace earrings set Lagos Nigeria",
+      category: "Premium Jewelry",
+      title: "Zirconia Imperial Bridal Set",
+      price: "₦145,000",
+    },
+    {
+      id: "jewelry-2",
+      imageSrc: "/images/product2.jpg",
+      altText:
+        "18k gold plated anti-tarnish cuban link statement choker necklace Laniks Beauty",
+      category: "Premium Jewelry",
+      title: "18k Gold Plated Cuban Choker",
+      price: "₦65,000",
+    },
+  ];
+
+  // Global transactional messaging parser generator
+  const generateWhatsappUrl = (productTitle: string) => {
+    const baseNumber = "2348000000000"; // Replace with company's operational terminal line
+    const text = encodeURIComponent(
+      `Hello Laniks Beauty, I would love to verify stock and purchase details for the item: "${productTitle}". Please send across ordering specifications.`,
+    );
+    return `https://wa.me{baseNumber}?text=${text}`;
+  };
+
   return (
     <section
-      id="shop"
-      className="w-full py-20 md:py-32 bg-zinc-950 text-white relative"
+      id="featured-products"
+      className="w-full py-20 lg:py-32 bg-stone-950"
     >
-      {/* Base Structural layout layer container */}
-      <div className="max-w-7xl mx-auto px-6 flex flex-col gap-12 md:gap-16">
-        {/* Header Layout Component Area showcasing SEO contextual framing */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="flex flex-col gap-3 max-w-xl">
-            <div className="flex items-center gap-2 text-amber-400 text-xs font-semibold tracking-widest uppercase">
-              <span className="w-6 h-px bg-amber-500" />
-              <span>Apothecary & Custom Seasonings</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-zinc-100">
-              Buy Premium Natural Seasonings & Potent Herbal Remedies Online
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header Framework with Niche Identity Targets */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
+          <div className="max-w-xl">
+            <span className="text-xs md:text-sm tracking-[0.3em] uppercase text-amber-400 font-semibold mb-3 block">
+              Curated Masterpieces
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif text-stone-50 font-normal tracking-tight">
+              Shop Our Signature <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-200 to-amber-400 font-semibold">
+                Wigs & Accessories
+              </span>
             </h2>
           </div>
-          <p className="text-zinc-400 font-light text-sm md:text-base max-w-sm leading-relaxed">
-            Handcrafted natural wellness remedies formulated individually by our
-            master herbalist to cleanse, refresh, and maintain optimal physical
-            performance.
+
+          <p className="text-stone-400 text-sm max-w-sm md:text-right font-light leading-relaxed">
+            Hand-selected, luxury human hair extensions paired seamlessly with
+            elegant, non-tarnish statement jewelry pieces.
           </p>
         </div>
 
-        {/* 4-Column Responsive Grid View */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {featuredProductsData.map((product) => (
+        {/* Dynamic 4-Item Display Layout Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
+          {featuredItems.map((item) => (
             <ProductCard
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              formattedPriceString={product.formattedPriceString}
-              category={product.category}
-              imagePath={product.imagePath}
+              key={item.id}
+              imageSrc={item.imageSrc}
+              altText={item.altText}
+              category={item.category}
+              title={item.title}
+              price={item.price}
+              whatsappLink={generateWhatsappUrl(item.title)}
             />
           ))}
         </div>
 
-        {/* Action routing trigger container heading towards general full product landing directory */}
-        <div className="flex justify-center mt-4">
+        {/* Global Catalog Navigation Anchor */}
+        <div className="text-center">
           <Button
             size="lg"
-            className="group bg-transparent hover:bg-amber-500 border border-amber-500/50 hover:border-amber-500 text-amber-400 hover:text-zinc-950 font-semibold px-8 py-6 rounded-full transition-all duration-300 text-base flex items-center justify-center gap-2"
+            className="bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-medium tracking-wide shadow-xl shadow-amber-950/10 px-10 py-6 scale-100 hover:scale-[1.02] transition-all duration-300"
           >
-            <Link href="/products">
-              <span>View All Holistic Products</span>
-              <FaArrowRight className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <Link href="/products">View All Masterpieces</Link>
           </Button>
         </div>
       </div>
