@@ -7,9 +7,9 @@ export default function ContactLayout() {
   const contactChannels = [
     {
       name: "WhatsApp Terminal",
-      detail: "+234 800 000 0000",
+      detail: "+234 808 844 9647",
       description: "Direct instant ordering & bundle customization requests",
-      href: "https://wa.me.",
+      href: "https://wa.me/08088449647",
       icon: FaWhatsapp,
       colorClass: "text-emerald-400 group-hover:bg-emerald-950/40",
     },

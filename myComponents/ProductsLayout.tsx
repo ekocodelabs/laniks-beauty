@@ -57,11 +57,11 @@ export default function ProductsLayout() {
 
   // Global transactional messaging parser generator
   const generateWhatsappUrl = (productTitle: string) => {
-    const baseNumber = "2348000000000"; // Replace with company's operational terminal line
+    const baseNumber = "08088449647"; // Replace with company's operational terminal line
     const text = encodeURIComponent(
       `Hello Laniks Beauty, I would love to verify stock and purchase details for the item: "${productTitle}". Please send across ordering specifications.`,
     );
-    return `https://wa.me{baseNumber}?text=${text}`;
+    return `https://wa.me/${baseNumber}?text=${text}`;
   };
 
   return (

@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button"; // shadcn button component
 
 export default function BannerLayout() {
   // Configurable details for easy maintainability
-  const whatsappNumber = "2348000000000"; // Replace with your actual Nigerian country code + phone number
+  const whatsappNumber = "08088449647"; // Replace with your actual Nigerian country code + phone number
   const message = encodeURIComponent(
     "Hello Laniks Beauty, I am interested in exploring your luxury hair and premium jewelry collections.",
   );
-  const whatsappUrl = `https://wa.me{whatsappNumber}?text=${message}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   return (
     <section className="relative w-full h-[85vh] md:h-[90vh] lg:h-screen flex items-center justify-center overflow-hidden bg-stone-950">

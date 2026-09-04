@@ -30,8 +30,8 @@ export default function NavbarLayout() {
     { name: "Connect", href: "#contact" },
   ];
 
-  const whatsappNumber = "2348000000000";
-  const directInquiryUrl = `https://wa.me{whatsappNumber}?text=Hello%20Laniks%20Beauty%2C%20I%20am%20visiting%20your%20digital%20showroom%20and%20would%20love%20to%20speak%20with%20a%20luxury%20consultant.`;
+  const whatsappNumber = "08088449647";
+  const directInquiryUrl = `https://wa.me/${whatsappNumber}?text=Hello%20Laniks%20Beauty%2C%20I%20am%20visiting%20your%20digital%20showroom%20and%20would%20love%20to%20speak%20with%20a%20luxury%20consultant.`;
 
   return (
     <>
