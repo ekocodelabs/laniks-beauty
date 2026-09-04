@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function Navbar() {
+export default function NavbarLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "The Legacy", href: "#about" },
     { name: "Signature Collection", href: "#featured-products" },
+    { name: "Reviews", href: "#reviews" },
     { name: "Connect", href: "#contact" },
   ];
 

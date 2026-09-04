@@ -30,7 +30,7 @@ export default function FooterLayout() {
             <ul className="space-y-2 text-xs font-light tracking-wide">
               <li>
                 <Link
-                  href="/products?category=hair"
+                  href="/"
                   className="hover:text-amber-400 transition-colors"
                 >
                   Premium Human Wigs
@@ -38,7 +38,7 @@ export default function FooterLayout() {
               </li>
               <li>
                 <Link
-                  href="/products?category=hair"
+                  href="/"
                   className="hover:text-amber-400 transition-colors"
                 >
                   Raw Donor Bundles
@@ -46,7 +46,7 @@ export default function FooterLayout() {
               </li>
               <li>
                 <Link
-                  href="/products?category=jewelry"
+                  href="/"
                   className="hover:text-amber-400 transition-colors"
                 >
                   Anti-Tarnish Accessories
@@ -54,7 +54,7 @@ export default function FooterLayout() {
               </li>
               <li>
                 <Link
-                  href="/products?category=jewelry"
+                  href="/"
                   className="hover:text-amber-400 transition-colors"
                 >
                   Bridal Jewelry Sets
@@ -87,7 +87,7 @@ export default function FooterLayout() {
               </li>
               <li>
                 <Link
-                  href="/shipping-policy"
+                  href="/"
                   className="hover:text-amber-400 transition-colors"
                 >
                   Nationwide Delivery & Pickups
@@ -108,13 +108,13 @@ export default function FooterLayout() {
           {/* Essential Legal Policies Block */}
           <div className="flex items-center space-x-6 order-1 sm:order-2">
             <Link
-              href="/privacy-policy"
+              href="/"
               className="hover:text-stone-300 transition-colors underline underline-offset-4 decoration-stone-800 hover:decoration-amber-400/40"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/terms-of-use"
+              href="/"
               className="hover:text-stone-300 transition-colors underline underline-offset-4 decoration-stone-800 hover:decoration-amber-400/40"
             >
               Terms of Use
@@ -125,7 +125,7 @@ export default function FooterLayout() {
           <p className="text-stone-500 order-3 text-center sm:text-right">
             Designed & Engineered by{" "}
             <span className="text-stone-300 font-medium hover:text-amber-400 transition-colors cursor-pointer">
-              ekocodelabs
+              Ekocodelabs
             </span>
           </p>
         </div>
