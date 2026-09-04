@@ -124,9 +124,14 @@ export default function FooterLayout() {
           {/* Premium Developer Attribution Accent */}
           <p className="text-stone-500 order-3 text-center sm:text-right">
             Designed & Engineered by{" "}
-            <span className="text-stone-300 font-medium hover:text-amber-400 transition-colors cursor-pointer">
+            <a
+              href="https://ekocodelabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 font-semibold hover:text-amber-400 border-b border-transparent hover:border-amber-500/30 transition-all duration-200 pb-0.5"
+            >
               Ekocodelabs
-            </span>
+            </a>
           </p>
         </div>
       </div>
